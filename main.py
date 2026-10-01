@@ -1,16 +1,31 @@
-# This is a sample Python script.
+from arbol import Arbol, Node
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+arbolito = Arbol()
 
+arbolito.root = Node(50)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+arbolito.root.left = Node(30)
+arbolito.root.right = Node(70)
 
+arbolito.root.left.left = Node(20)
+arbolito.root.left.right = Node(40)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+arbolito.root.right.left = Node(60)
+arbolito.root.right.right = Node(80)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+resultado = arbolito.buscarElementosBst(40)
+
+if resultado is not None:
+    print("Encontrado:", resultado.key)
+else:
+    print("No encontrado")
+
+arbolito.delete(40)
+
+resultado = arbolito.buscarElementosBst(40)
+
+if resultado is not None:
+    print("40 todavía existe")
+else:
+    print("40 fue eliminado")
+
