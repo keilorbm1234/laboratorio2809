@@ -13,6 +13,13 @@ arbol.insertar(80)
 
 arbol.print_tree()
 
+#Revisa si es un árbol BST antes de borrar nodos
+if arbol.esBST():
+    print("Es un árbol BST")
+else:
+    print("No es un árbol BST")
+
+
 # Borrar un valor del arbol
 arbol.delete(30)
 
@@ -39,5 +46,3 @@ if resultado is not None:
     print("Elemento encontrado:", resultado.key)
 else:
     print("Elemento no encontrado")
-
-# Un método que reciba un nodo a la raíz de un árbol y determine si es BST o no
