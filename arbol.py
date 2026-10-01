@@ -69,6 +69,24 @@ class Arbol:
             node.right = self._insertar(node.right, key)
 
         return node
+    def esBST(self, nodo=None) -> bool:  # Recibe root porque eso pide el lab
+        if nodo is None:
+            root = self.root
+        else:
+            root = nodo
+
+        # Le ponemos valores grandes por defecto al iniciar
+        return self._esBST(root, -9999, 9999)
+    def _esBST(self, root, min, max) -> bool:
+        if root is None:
+            return True
+
+        if root.key is None or not (min < root.key < max):
+            return False
+
+        else:
+            return self._esBST(root.left,min,root.key) and self._esBST(root.right,root.key,max)
+
 
     # extra - imprimir
     def print_tree(self):
