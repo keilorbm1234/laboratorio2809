@@ -56,3 +56,34 @@ class Arbol:
 
         return node
 
+    def insertar(self, key):
+        self.root = self._insertar(self.root, key)
+
+    def _insertar(self, node, key):
+        if node is None:
+            return Node(key)
+
+        if key < node.key:
+            node.left = self._insertar(node.left, key)
+        elif key > node.key:
+            node.right = self._insertar(node.right, key)
+
+        return node
+
+    # extra - imprimir
+    def print_tree(self):
+        """Print the tree structure in a readable format."""
+        self._print_tree(" ", self.root, False)
+
+    def _print_tree(self, p, r, is_left):
+        if r:
+            print(p, end='')
+            if is_left:
+                print("|--", end='')
+                s = "|    "
+            else:
+                print("'--", end='')
+                s = "    "
+            print(r.key)
+            self._print_tree(p + s, r.left, True)
+            self._print_tree(p + s, r.right, False)

@@ -1,31 +1,43 @@
-from arbol import Arbol, Node
+from arbol import Arbol
 
-arbolito = Arbol()
+arbol = Arbol()
 
-arbolito.root = Node(50)
+# Insertar un valor en el arbol
+arbol.insertar(50)
+arbol.insertar(30)
+arbol.insertar(70)
+arbol.insertar(20)
+arbol.insertar(40)
+arbol.insertar(60)
+arbol.insertar(80)
 
-arbolito.root.left = Node(30)
-arbolito.root.right = Node(70)
+arbol.print_tree()
 
-arbolito.root.left.left = Node(20)
-arbolito.root.left.right = Node(40)
+# Borrar un valor del arbol
+arbol.delete(30)
 
-arbolito.root.right.left = Node(60)
-arbolito.root.right.right = Node(80)
-
-resultado = arbolito.buscarElementosBst(40)
-
-if resultado is not None:
-    print("Encontrado:", resultado.key)
-else:
-    print("No encontrado")
-
-arbolito.delete(40)
-
-resultado = arbolito.buscarElementosBst(40)
+resultado = arbol.buscarElementosBst(30)
 
 if resultado is not None:
-    print("40 todavía existe")
+    print("El elemento 30 sigue en el árbol")
 else:
-    print("40 fue eliminado")
+    print("El elemento 30 fue eliminado")
 
+arbol.print_tree()
+
+# Buscar un valor del arbol
+resultado = arbol.buscarElementosBst(40)
+
+if resultado is not None:
+    print("Elemento encontrado:", resultado.key)
+else:
+    print("Elemento no encontrado")
+
+resultado = arbol.buscarElementosBst(90)
+
+if resultado is not None:
+    print("Elemento encontrado:", resultado.key)
+else:
+    print("Elemento no encontrado")
+
+# Un método que reciba un nodo a la raíz de un árbol y determine si es BST o no
